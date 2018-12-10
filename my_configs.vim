@@ -14,8 +14,9 @@ syntax enable
 set background=dark
 colorscheme molokai
 
+autocmd BufEnter *.js set ft=javascript
+
 let g:molokai_original = 1
-"let g:rehash256 = 1
 
 "set termguicolors
 set t_Co=256  " vim-monokai now only support 256 colours in terminal.
@@ -58,5 +59,21 @@ nnoremap jsd :<C-u>call JSDocAdd()<CR>
 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+
+let g:mta_filetypes = {
+  \ 'javascript.jsx': 1,
+  \}
+
+au BufRead,BufNewFile *.json set filetype=json
+let g:syntastic_json_checkers=['jsonlint']
+
+let g:vim_jsx_pretty_enable_jsx_highlight = 1
+let g:vim_jsx_pretty_colorful_config = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
